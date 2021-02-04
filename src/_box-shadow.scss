@@ -1,0 +1,39 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@function box-shadow($args...) {
+  $box-shadows: ();
+  @each $box-shadow in $args {
+    $value: null;
+    @if ($box-shadow == none) {
+      $value: none;
+    } @else {
+      $bs: map.merge(
+        (
+          inset: false,
+          x: 0,
+          y: 0,
+          blur: null,
+          spread: null,
+          color: null,
+        ),
+        $box-shadow
+      );
+
+      $blur: map.get($bs, blur);
+      $spread: map.get($bs, spread);
+      $bs: map.set($bs, blur, if($blur == null and $spread != null, 0, $blur));
+
+      $value: if(map.get($bs, inset), inset, null)
+        map.get($bs, x)
+        map.get($bs, y)
+        map.get($bs, blur)
+        map.get($bs, spread)
+        map.get($bs, color);
+    }
+
+    $box-shadows: list.append($box-shadows, $value, $separator: comma);
+  }
+
+  @return $box-shadows;
+}
