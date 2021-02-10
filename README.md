@@ -2,26 +2,44 @@
 
 The `box-shadow` module is a sass function that can be used to build box-shadow declarations from Sass variable maps.
 
+<details>
+  <summary>Table of Contents</summary>
+
+- [box-shadow() Sass function](#box-shadow-sass-function)
+  - [API](#api)
+    - [Function `box-shadow($box-shadows...)`](#function-box-shadowbox-shadows)
+      - [Parameter `$box-shadows`](#parameter-box-shadows)
+  - [Examples](#examples)
+    - [Single `box-shadow` map](#single-box-shadow-map)
+    - [Multiple `box-shadow` maps](#multiple-box-shadow-maps)
+    - [`spread` without `blur`](#spread-without-blur)
+
+</details>
+
 ## API
 
-### `box-shadow($box-shadows...)`
+### Function `box-shadow($box-shadows...)`
 
-#### `$box-shadows`
+Create a `box-shadow` declaration from a Sass map.
+
+#### Parameter `$box-shadows`
+
+| Meta | Details      |
+| ---- | ------------ |
+| type | list of maps |
 
 A list of maps describing box-shadows or `none`.
 
 Each map has keys/values of:
 
-```scss
-(
-  inset: false,
-  x: 0,
-  y: 0,
-  blur: null,
-  spread: null,
-  color: null
-)
-```
+| Key    | Type           | Default |
+| ------ | -------------- | ------- |
+| inset  | boolean        | false   |
+| x      | number         | 0       |
+| y      | number         | 0       |
+| blur   | number or null | null    |
+| spread | number or null | null    |
+| color  | color or null  | null    |
 
 `inset` is a boolean to toggle the [inset][] keyword.
 
